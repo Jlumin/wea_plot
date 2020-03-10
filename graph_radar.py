@@ -13,7 +13,7 @@ from matplotlib.patches import Polygon
 from matplotlib.collections import PatchCollection
 from mpl_toolkits.basemap import Basemap
 import json
-mypath='/Users/wujim/Desktop/icebergtek/氣象局資料/data/'
+mypath='D:\01.work\00.冰山科技\98.2020專案\氣象局資料\data\'
 allFileList = os.listdir(mypath)
 
 
@@ -42,16 +42,16 @@ for i in range(len(allFileList)):
                                   ax=ax,default_encoding='iso-8859-15')
             X, Y = np.meshgrid(np.linspace(115,126.5125,921), np.linspace(18,28.0125,881))
             RAD_level=[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65]
-            RAD_cmap=['#FFFFFF','#FFFFFF','#FFFFFF','#FF9090','#FF6060','#FF2020','#CC0000',
-                      '#A00000','#600000','#400000']
-            cs = m.contourf(x=X, y=Y, data=a,ax=ax,cmap='Oranges')
+            RAD_cmap=['#ffffff','#0091ff','#0048ff','#00ff00','#00c800','#009600','#ffff00',
+                      '#ffc800','#ff7800','#f50000','#be0000','#960000','#ff00ff','#9600ff']
+            cs = m.contourf(x=X, y=Y, data=a, ax=ax, cmap=RAD_cmap, levels=RAD_level)
             ax.set_xticks(np.linspace(115,127,8))
             ax.set_yticks(np.linspace(15,28,13))
             ax.set_xlabel(r'longtitude($^o$)',fontdict={'fontsize':8})
             ax.set_ylabel(r'latitude($^o$)',fontdict={'fontsize':8})
             cbar = fig.colorbar(cs, ax=ax, shrink=0.8)
             cbar.ax.tick_params(labelsize=10)
-            plt.savefig('../'+allFileList[i].rstrip('.txt')+'.png', dpi= 300)
+            plt.savefig('D:\01.work\00.冰山科技\98.2020專案\氣象局資料\out_photo'+allFileList[i].rstrip('.txt')+'.png', dpi= 300)
         except :
             print(allFileList[i])
             pass
