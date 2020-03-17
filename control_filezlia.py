@@ -4,14 +4,7 @@ Created on Sun Mar  8 13:41:32 2020
 
 @author: Luming
 """
-#parameter
-Ip = "192.168.0.172"
-Port = 22
-timeout = 30
-User = "pi"
-Password = "raspberry"
-local = "D:/test2/"
-remote = '/home/pi/radar_data/'#遠端檔案或目錄
+
 #module
 import paramiko
 import os
@@ -57,7 +50,7 @@ def DownLoadFileTree(sftp, LocalDir, RemoteDir):  # 下載整個目錄下的檔�
 
 if __name__ == '__main__':
   sf = paramiko.Transport((Ip, Port))
-  sf.connect(username=user, password=Password)
+  sf.connect(username=User, password=Password)
   sftp = paramiko.SFTPClient.from_transport(sf)
   DownLoadFileTree(sftp,local,remote)#下載
 sftp.close()
@@ -66,7 +59,7 @@ sf.close()
 #====================Delete the file in remote server===========================
 ssh=paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh.connect(hostname=Ip,port=22,username=user,password=Password)
+ssh.connect(hostname=Ip,port=22,username=User,password=Password)
 sftp = ssh.open_sftp()
 for file in sftp.listdir(remote):
     sftp.remove(remote+file)

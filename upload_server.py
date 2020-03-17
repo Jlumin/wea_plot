@@ -5,18 +5,7 @@ Created on Tue Mar 17 14:24:55 2020
 @author: Luming
 """
 
-#parameter
-# ====內網=====================================================================
-Ip = "192.168.0.144"
-Port = 22
-# =====internet=====================================================================
-#Ip = "proxy73.rt3.io"
-#Port = 32966
-timeout = 30
-User = "pi"
-Password = "odiedag8"
-local = "D:/01.work/00.冰山科技/98.2020專案/wea_plan/server_auto/test/"
-remote = '/home/pi/test/'#遠端檔案或目錄
+
 #module
 import paramiko
 import os
